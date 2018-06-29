@@ -8,6 +8,7 @@ public class Grid : MonoBehaviour
     public int sizeX;
     public int sizeY;
     public GameObject[] prefabs;
+    public GameObject floorPrefab;
     public GameObject[,] gameObjects;
     GridData gridData;
     WaitForSeconds generationThrottle;
@@ -19,6 +20,9 @@ public class Grid : MonoBehaviour
 
     void Start()
     {
+        gridData = new GridData();
+        gridData.GenerateGrid(sizeX, sizeY);
+        StartCoroutine(InstantiateGrid(gridData));
     }
 
     IEnumerator InstantiateGrid(GridData gridData)
@@ -30,13 +34,40 @@ public class Grid : MonoBehaviour
             for (int j = 0; j < gridData.map.GetLength(1); j++)
             {
                 yield return generationThrottle;
-                gameObjects[i, j] = Instantiate(prefabs[gridData.map[i, j]], positionFromCoordinates(i, j), Quaternion.identity);
+                if (gridData.hasFloor[i, j] == true)
+                {
+                    gameObjects[i, j] = Instantiate(floorPrefab, PositionFromCoordinates(i, j, TileType.Floor), Quaternion.identity, this.transform);
+                }
+                gameObjects[i, j] = Instantiate(prefabs[gridData.map[i, j]], PositionFromCoordinates(i, j, (TileType)gridData.map[i, j]), Quaternion.Euler(RotationFromCoordinates(i, j, (TileType)gridData.map[i, j])), this.transform);
             }
         }
     }
 
-    Vector3 positionFromCoordinates(int x, int y)
+    Vector3 PositionFromCoordinates(int x, int y, TileType tileType)
     {
-        return new Vector3(x, y, 0);
+        switch (tileType)
+        {
+            case TileType.Floor:
+                return new Vector3(x, 0, y);
+            case TileType.Wall:
+                return new Vector3(x, 0.5f, y);
+        }
+
+        return new Vector3(x, 0, y);
+    }
+
+    Vector3 RotationFromCoordinates(int x, int y, TileType tileType)
+    {
+        switch (tileType)
+        {
+            case TileType.Wall:
+                if (y != 0 && y +1 != gridData.map.GetLength(1))
+                {
+                    return new Vector3(0, 90, 0);
+                }
+                break;
+        }
+
+        return Vector3.zero;
     }
 }
