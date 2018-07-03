@@ -5,10 +5,6 @@ using System;
 public class GridGenerator
 {
     private System.Random random;
-
-
-    #region recursive backtracker
-
     private int totalSize;
     public Cell[,] cells;
     List<Cell> cellList = new List<Cell>();
@@ -25,6 +21,10 @@ public class GridGenerator
 
         }
     }
+
+    #region recursive backtracker
+
+
     public Dictionary<Directions, int> directionValuesX = new Dictionary<Directions, int>();
     public Dictionary<Directions, int> directionValuesY = new Dictionary<Directions, int>();
 
@@ -84,12 +84,50 @@ public class GridGenerator
                 break;
             }
             directions.Remove(randomDirection);
-            CarvePassageFrom(currentX, currentY, cells);
+            if (cellList.Count > 0)
+            {
+                CarvePassageFrom(currentX, currentY, cells);
+
+            }
         }
+
         cellList.Remove(cells[currentX, currentY]);
     }
+
+
+
     #endregion
 
+    #region own generator
+    private bool[,] hasFloor;
+    private int[,] map;
+    public void GenerateGrid(int x, int y)
+    {
+        this.map = new int[x, y];
+        this.hasFloor = new bool[x, y];
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                map[i, j] = 0;
+                hasFloor[i, j] = true;
 
+                if (WallRequired(this.map, i, j))
+                {
+                    map[i, j] = 1;
+                }
+            }
+        }
+    }
+
+    public bool WallRequired(int[,] map, int x, int y)
+    {
+        if (x == 0) return true;
+        if (y == 0) return true;
+        if (x == map.GetLength(0) - 1) return true;
+        if (y == map.GetLength(1) - 1) return true;
+        return false;
+    }
+    #endregion
 
 }

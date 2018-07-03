@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &282840810
 GameObject:
@@ -373,48 +373,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 483038659}
---- !u!1001 &961209813
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114006439192176, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0c14a5bdbd395024aa9c70b59710ab7b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1047591028
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +460,7 @@ RectTransform:
   m_Children:
   - {fileID: 483038660}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -569,13 +527,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1373230653 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1105409587072996, guid: 0c14a5bdbd395024aa9c70b59710ab7b,
-    type: 2}
-  m_PrefabInternal: {fileID: 961209813}
 --- !u!1 &1502493884
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514197876}
   - component: {fileID: 1514197875}
+  - component: {fileID: 1514197874}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -666,6 +620,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1514197874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514197873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5762d3b10fe52b439509031c2fff64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs: []
+  floorPrefab: {fileID: 0}
+  recursiveMazePrefab: {fileID: 0}
 --- !u!114 &1514197875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +648,7 @@ MonoBehaviour:
   sizeX: 5
   sizeY: 5
   prefabs:
-  - {fileID: 1373230653}
+  - {fileID: 0}
   - {fileID: 1556008819843738, guid: 07b3272126b53e1479caa86d5c77771d, type: 2}
   - {fileID: 1488283374172170, guid: 0a3fc45db26990c4bbf665552723f0e9, type: 2}
   - {fileID: 1411511555966498, guid: 9b073f1a6f462564cabc715a23d53487, type: 2}
@@ -698,7 +666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015188742
 GameObject:
@@ -708,6 +676,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2015188743}
+  - component: {fileID: 2015188744}
   m_Layer: 0
   m_Name: GridGenerator
   m_TagString: Untagged
@@ -726,5 +695,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2015188744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2015188742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5762d3b10fe52b439509031c2fff64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs: []
+  floorPrefab: {fileID: 1105409587072996, guid: 0c14a5bdbd395024aa9c70b59710ab7b,
+    type: 2}
+  recursiveMazePrefab: {fileID: 114236285443944374, guid: 6585a1dc60c7bcf4e8cbea09a0cc52c5,
+    type: 2}

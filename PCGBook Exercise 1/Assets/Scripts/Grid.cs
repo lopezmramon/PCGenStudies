@@ -21,8 +21,8 @@ public class Grid : MonoBehaviour
     void Start()
     {
         gridData = new GridData();
-        gridData.GenerateGrid(sizeX, sizeY);
-        StartCoroutine(InstantiateGrid(gridData));
+      //  gridData.GenerateGrid(sizeX, sizeY);
+     //   StartCoroutine(InstantiateGrid(gridData));
     }
 
     IEnumerator InstantiateGrid(GridData gridData)
